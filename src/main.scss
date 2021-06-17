@@ -1,0 +1,34 @@
+.card {
+  border: 1px solid gray;
+  padding: 0.5rem;
+  max-width: 260px;
+}
+.card-photo {
+  display: block;
+  background-color: lightgray;
+}
+.card-number {
+  padding-top: 0.25rem;
+  padding-bottom: 0.75rem;
+}
+.poke-info {
+  padding: 1rem 1rem 0;
+}
+.poke-name {
+  font-weight: 700;
+  color: dimgray;
+  padding-bottom: 0.5rem;
+}
+.poke-types {
+  display: flex;
+  gap: 0.5rem;
+
+  .poke-type {
+    padding: 0.15rem 1rem;
+  }
+  .grass { background-color: lightgreen; }
+  .poison {
+    background-color: purple;
+    color: white;
+  }
+}
