@@ -1,3 +1,7 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 250px);
+}
 .card {
   border: 1px solid gray;
   padding: 0.5rem;
@@ -31,4 +35,8 @@
     background-color: purple;
     color: white;
   }
+  .fire { background-color: orange; }
+  .flying { background-color: lightcyan; }
+  .water { background-color: darkblue; color: lightcyan; }
+  .bug { background-color: forestgreen; color: white; }
 }
