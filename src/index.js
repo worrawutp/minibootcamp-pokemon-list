@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', function(){
   const pokemons = getUniquePokemon()
 
   insertPokemons(cards, pokemons)
+})
 
+function assignEventToButtonType(cards) {
   const pokeTypeButtons = document.querySelectorAll('.poke-type')
   pokeTypeButtons.forEach(btn => {
     btn.addEventListener('click', function() {
@@ -18,13 +20,15 @@ document.addEventListener('DOMContentLoaded', function(){
       insertPokemons(cards, newPokemons)
     })
   })
-})
+}
 
 function insertPokemons(cards, pokemons) {
   pokemons.forEach(pokemon => {
     let cardDOM = buildCardDOM(pokemon)
     cards.insertAdjacentHTML('beforeend', cardDOM) 
   })
+
+  assignEventToButtonType(cards)
 }
 
 function clearPokemonsCards(cards) {
