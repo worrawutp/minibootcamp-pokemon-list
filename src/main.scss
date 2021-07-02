@@ -29,6 +29,13 @@
 
   .poke-type {
     padding: 0.15rem 1rem;
+    cursor: pointer;
+    transform: translateY(0);
+    transition: transform 0.15s linear;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
   }
   .grass { background-color: lightgreen; }
   .poison {
