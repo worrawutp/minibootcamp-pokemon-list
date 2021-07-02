@@ -2,16 +2,30 @@ import pokemonCollection from './pokemons.json'
 
 import './main.scss'
 
+const PACK = 50
+
 document.addEventListener('DOMContentLoaded', function(){
-  const PACK = 20
   const cards = document.getElementById('cards')
-  const pokemons = pokemonCollection.slice(0, PACK)
+  const pokemons = getUniquePokemon()
 
   pokemons.forEach(pokemon => {
     let cardDOM = buildCardDOM(pokemon)
     cards.insertAdjacentHTML('beforeend', cardDOM) 
   })
 })
+
+function getUniquePokemon() {
+  let result = []
+  for(var i=1; i<=PACK; i++) {
+    let pokemonNumbers = pokemonCollection.filter(pokemon => pokemon.id == i)
+    let pokemonLowestWeight = pokemonNumbers.reduce((lowest, pokemon) => {
+      return (pokemon.weight < lowest.weight) ? pokemon : lowest 
+    }, { weight: 10000 })
+
+    result.push(pokemonLowestWeight)
+  }
+  return result
+}
 
 function buildCardDOM(pokemon) {
   let typeString = ''
