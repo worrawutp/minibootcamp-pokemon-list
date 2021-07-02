@@ -8,11 +8,37 @@ document.addEventListener('DOMContentLoaded', function(){
   const cards = document.getElementById('cards')
   const pokemons = getUniquePokemon()
 
+  insertPokemons(cards, pokemons)
+
+  const pokeTypeButtons = document.querySelectorAll('.poke-type')
+  pokeTypeButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      let newPokemons = getPokemonByType()
+      clearPokemonsCards(cards)
+      insertPokemons(cards, newPokemons)
+    })
+  })
+})
+
+function insertPokemons(cards, pokemons) {
   pokemons.forEach(pokemon => {
     let cardDOM = buildCardDOM(pokemon)
     cards.insertAdjacentHTML('beforeend', cardDOM) 
   })
-})
+}
+
+function clearPokemonsCards(cards) {
+  cards.textContent = ''
+}
+
+function getPokemonByType() {
+  const pokemonType = event.currentTarget.textContent
+  const pokemons = getUniquePokemon()  
+  return pokemons.filter(pokemon => {
+    let finding = pokemon.type.find(t => t == pokemonType)
+    return finding == undefined ? null : pokemon
+  })
+}
 
 function getUniquePokemon() {
   let result = []
@@ -30,7 +56,7 @@ function getUniquePokemon() {
 function buildCardDOM(pokemon) {
   let typeString = ''
   pokemon.type.forEach(t => {
-    typeString += `<div class="poke-type ${t.toLowerCase()}">${t}</div>`
+    typeString += `<div role="button" class="poke-type ${t.toLowerCase()}">${t}</div>`
   })
 
   return (
